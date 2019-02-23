@@ -3,10 +3,12 @@ FROM ubuntu:18.04
 ENV JE_VER="5.1.0"
 ENV RUBY_VER="2.6.1"
 
+SHELL ["bash","-c"]
+
 RUN echo "Etc/UTC" > /etc/localtime && \
 	apt update && \
 	apt -y dist-upgrade && \
-	apt -y install wget make gcc g++ autoconf && \
+	apt -y install wget autoconf build-essential && \
 	cd ~ && \
 	wget https://github.com/jemalloc/jemalloc/archive/$JE_VER.tar.gz && \
 	tar xf $JE_VER.tar.gz && \
@@ -19,7 +21,8 @@ RUN echo "Etc/UTC" > /etc/localtime && \
 ENV CPPFLAGS="-I/opt/jemalloc/include"
 ENV LDFLAGS="-L/opt/jemalloc/lib/"
 RUN apt -y install zlib1g-dev libssl-dev \
-		libgdbm-dev libdb-dev libreadline-dev && \
+		bison libyaml-dev libgdbm-dev libreadline-dev \
+		libncurses5-dev libffi-dev && \
 	cd ~ && \
 	wget https://cache.ruby-lang.org/pub/ruby/${RUBY_VER%.*}/ruby-$RUBY_VER.tar.gz && \
 	tar xf ruby-$RUBY_VER.tar.gz && \
