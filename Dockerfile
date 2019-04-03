@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV JE_VER="5.1.0"
+ENV JE_VER="5.2.0"
 ENV RUBY_VER="2.6.2"
 
 SHELL ["bash","-c"]
