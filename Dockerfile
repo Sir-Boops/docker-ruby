@@ -1,6 +1,6 @@
 FROM alpine:3.10.2
 
-ENV RUBY_VER="2.6.4"
+ENV RUBY_VER="2.6.5"
 
 RUN apk upgrade && \
 	apk add gcc g++ make linux-headers \
