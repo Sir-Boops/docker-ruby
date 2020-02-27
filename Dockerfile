@@ -1,4 +1,4 @@
-FROM alpine:3.10.2
+FROM alpine:3.11.3
 
 ENV RUBY_VER="2.6.5"
 
